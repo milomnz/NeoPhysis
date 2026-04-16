@@ -1,6 +1,7 @@
 {
   "name": "neophysis",
   "version": "0.0.0",
+  "author": "milomnz",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

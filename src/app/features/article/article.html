@@ -1,0 +1,17 @@
+<!-- @autor milomnz -->
+
+<div class="article-layout">
+  <article>
+    <h2>{{ article.title }}</h2>
+    <figure>
+      <img [src]="article.imageUrl" [alt]="article.title" />
+      <figcaption>{{ article.imageCaption }}</figcaption>
+    </figure>
+    <section class="article-body">
+      @for (paragraph of article.body; track $index) {
+        <p>{{ paragraph }}</p>
+      }
+    </section>
+  </article>
+  <app-article-meta [article]="article" />
+</div>

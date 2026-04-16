@@ -1,1 +1,87 @@
-/* You can add global styles to this file, and also import other style files */
+/** @autor milomnz */
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@400;600;700&family=Newsreader:wght@400;600;700&display=swap');
+
+:root {
+  --primary: #3c6075;
+  --primary-container: #55798f;
+  --on-primary: #ffffff;
+  --surface: #fcf9f8;
+  --surface-container: #f0eded;
+  --surface-container-high: #eae7e7;
+  --surface-container-low: #f6f3f2;
+  --on-surface: #1c1b1b;
+  --on-surface-variant: #42484c;
+  --outline-variant: #c2c7cc;
+  --sidebar-gradient: linear-gradient(to bottom, #3c6075, #55798f);
+
+  --font-headline: 'Newsreader', serif;
+  --font-body: 'Newsreader', serif;
+  --font-label: 'Inter', sans-serif;
+
+  --font-serif: 'Libre Baskerville', serif;
+  --font-sans: 'Inter', sans-serif;
+
+  --border-radius: 0.25rem;
+  --border-radius-lg: 0.5rem;
+  --border-radius-full: 9999px;
+
+  --sidebar-width: 256px;
+  --topbar-height: 64px;
+
+  --color-sidebar: #5D8091;
+  --color-bg: #F3F4F6;
+  --color-hr: #D1D5DB;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--surface);
+  color: var(--on-surface);
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+app-root {
+  display: block;
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  min-height: 100dvh;
+}
+
+.page-shell {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  min-height: 100dvh;
+  min-height: 100vh;
+}
+
+.page-shell > main {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 3rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 1023px) {
+  .page-shell > main {
+    padding: 1.25rem;
+    padding-top: 4.5rem;
+  }
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}

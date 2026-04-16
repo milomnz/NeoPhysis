@@ -1,0 +1,82 @@
+/** @autor milomnz */
+
+.article-layout {
+  display: flex;
+  gap: 3rem;
+
+  article {
+    flex-grow: 1;
+    max-width: 56rem;
+
+    h2 {
+      font-family: var(--font-serif);
+      font-size: 1.875rem;
+      line-height: 1.4;
+      color: #1f2937;
+      margin-bottom: 2rem;
+    }
+
+    figure {
+      margin-bottom: 2rem;
+      border-radius: 2px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+
+      img {
+        width: 100%;
+        object-fit: cover;
+        max-height: 500px;
+        display: block;
+      }
+
+      figcaption {
+        font-size: 0.625rem;
+        color: #9ca3af;
+        text-align: right;
+        margin-top: 0.25rem;
+        padding-right: 0.25rem;
+      }
+    }
+
+    .article-body {
+      p {
+        font-family: var(--font-serif);
+        font-size: 1.125rem;
+        line-height: 1.75;
+        color: #374151;
+        margin-bottom: 1.5rem;
+      }
+    }
+  }
+}
+
+// Metadata sidebar
+.meta-sidebar {
+  width: 16rem;
+  flex-shrink: 0;
+
+  .meta-card {
+    background-color: var(--color-bg);
+    padding: 1.5rem;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+
+    .meta-field {
+      margin-bottom: 1rem;
+
+      &:last-child { margin-bottom: 0; }
+
+      h3 {
+        font-size: 0.875rem;
+        font-weight: 700;
+        color: #111827;
+      }
+
+      p {
+        font-size: 0.75rem;
+        color: #374151;
+        margin-top: 0.25rem;
+      }
+    }
+  }
+}
