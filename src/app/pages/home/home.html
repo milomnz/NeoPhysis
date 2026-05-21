@@ -1,0 +1,58 @@
+<div class="page-shell">
+  <app-sidebar-nav></app-sidebar-nav>
+  <main style="padding: 0;">
+<section class="carousel"
+  (mouseenter)="pauseAutoPlay()"
+  (mouseleave)="resumeAutoPlay()">
+
+  <div class="carousel-track">
+    @for (slide of slides; track slide.id; let i = $index) {
+      <div class="carousel-slide" [class.active]="i === currentSlide">
+        <img [src]="slide.img" [alt]="slide.titulo" class="slide-img">
+        <div class="slide-overlay">
+          <h1 class="slide-titulo">NEO PHYSIS</h1>
+          <p class="slide-sub">{{ slide.subtitulo }}</p>
+          <div class="slide-btns">
+            <button class="btn-primary" (click)="irAForos()">Explorar ahora</button>
+            <button class="btn-secondary" (click)="irAPublicar()">Publicar foro</button>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+
+  <button class="carousel-btn prev" (click)="prevSlide()">&#8249;</button>
+  <button class="carousel-btn next" (click)="nextSlide()">&#8250;</button>
+
+  <div class="carousel-dots">
+    @for (slide of slides; track slide.id; let i = $index) {
+      <button class="dot" [class.active]="i === currentSlide" (click)="goToSlide(i)"></button>
+    }
+  </div>
+
+  <div class="progress-bar">
+    <div class="progress-fill" [style.animation-duration]="AUTOPLAY_DELAY + 'ms'"></div>
+  </div>
+</section>
+
+<section class="seccion">
+  <h2 class="seccion-titulo fade-item" #animTarget>Tendencias</h2>
+  @for (post of posts; track post.id) {
+    <div class="fade-item" #animTarget>
+      <app-post-card [post]="post"></app-post-card>
+    </div>
+  }
+</section>
+
+<section class="seccion">
+  <h2 class="seccion-titulo fade-item" #animTarget>Recomendados para ti</h2>
+  <div class="rec-grid">
+    @for (rec of recomendados; track rec.id; let i = $index) {
+      <div class="fade-item" #animTarget [style.transition-delay]="(i * 0.15) + 's'">
+        <app-rec-card [rec]="rec"></app-rec-card>
+      </div>
+    }
+  </div>
+</section>
+  </main>
+</div>

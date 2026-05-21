@@ -1,0 +1,63 @@
+<div class="page-shell">
+  <app-sidebar-nav></app-sidebar-nav>
+  <main class="about-container">
+
+  <header class="about-header fade-item" #animTarget>
+    <h1 class="about-title">Sobre nosotros</h1>
+    <p class="about-sub">
+      Neo Physis es una plataforma dedicada a conectar la ciencia, la tecnología y la
+      naturaleza en un solo espacio colaborativo. Creemos en el poder del conocimiento
+      como motor de transformación social y ambiental.
+    </p>
+  </header>
+
+  <section class="misiones">
+    @for (m of misiones; track m.id; let i = $index) {
+      <article class="mision-card fade-item slide-left" #animTarget
+        [style.transition-delay]="(i * 0.15) + 's'">
+        <img [src]="m.img" [alt]="m.titulo" class="mision-img">
+        <div class="mision-body">
+          <h3>{{ m.titulo }}</h3>
+          <p>{{ m.desc }}</p>
+        </div>
+      </article>
+    }
+  </section>
+
+  <section class="contadores-section fade-item" #animTarget #counterSection>
+    @for (c of contadores; track c.id) {
+      <div class="contador-item">
+        <span class="contador-num">{{ c.current }}{{ c.sufijo }}</span>
+        <span class="contador-label">{{ c.label }}</span>
+      </div>
+    }
+  </section>
+
+  <section class="valores-section">
+    <h2 class="valores-titulo fade-item" #animTarget>Nuestros Valores</h2>
+    <div class="valores-grid">
+      @for (v of valores; track v.id; let i = $index) {
+        <article class="valor-card fade-item pop-in" #animTarget
+          [style.transition-delay]="(i * 0.12) + 's'">
+          <span class="valor-icono">{{ v.icono }}</span>
+          <h4>{{ v.titulo }}</h4>
+          <p>{{ v.desc }}</p>
+          <div class="valor-stats">
+            <span>❤ {{ v.likes }}</span>
+            <span>☁ {{ v.shares }}</span>
+            <span>💬 {{ v.comments }}</span>
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+
+  <div class="about-footer-img fade-item" #animTarget>
+    <img src="/assets/images/about-footer.jpg" alt="Científico">
+    <div class="footer-overlay">
+      <p>Juntos construimos el conocimiento del mañana</p>
+    </div>
+  </div>
+
+  </main>
+</div>

@@ -1,0 +1,238 @@
+.carousel {
+    position: relative;
+    height: 320px;
+    overflow: hidden;
+    background: #0a1628;
+}
+
+.carousel-track {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.carousel-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transform: scale(1.04);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    pointer-events: none;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+    z-index: 2;
+}
+
+.slide-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.45);
+}
+
+.slide-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    z-index: 3;
+    text-align: center;
+    padding: 20px;
+}
+
+.slide-titulo {
+    color: #ffffff;
+    font-size: 52px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.6);
+    animation: heroFade 0.7s ease both;
+}
+
+.slide-sub {
+    color: #cce4ee;
+    font-size: 15px;
+    animation: heroFade 0.9s ease both;
+}
+
+.slide-btns {
+    display: flex;
+    gap: 12px;
+    margin-top: 6px;
+    animation: heroFade 1.1s ease both;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: #ffffff;
+    border: none;
+    padding: 11px 28px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.25s, transform 0.2s;
+}
+
+.btn-primary:hover {
+    background: var(--primary-container);
+    transform: scale(1.05);
+}
+
+.btn-primary:active {
+    transform: scale(0.97);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    padding: 11px 28px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.25s, transform 0.2s;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.05);
+}
+
+.btn-secondary:active {
+    transform: scale(0.97);
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.35);
+    color: #ffffff;
+    border: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    font-size: 26px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.carousel-btn:hover {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.carousel-btn.prev {
+    left: 16px;
+}
+
+.carousel-btn.next {
+    right: 16px;
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.dot.active {
+    background: #ffffff;
+    transform: scale(1.3);
+    border-color: #ffffff;
+}
+
+.progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.2);
+    z-index: 10;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--primary);
+    animation: progressAnim linear infinite;
+}
+
+.seccion {
+    padding: 28px 36px;
+}
+
+.seccion-titulo {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--on-surface);
+    margin: 0 0 18px;
+    border-left: 4px solid var(--primary);
+    padding-left: 10px;
+}
+
+.rec-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.fade-item {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.fade-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes heroFade {
+    from {
+        opacity: 0;
+        transform: translateY(-14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes progressAnim {
+    from {
+        width: 0%;
+    }
+
+    to {
+        width: 100%;
+    }
+}

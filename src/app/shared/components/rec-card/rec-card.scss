@@ -1,0 +1,50 @@
+.rec-card {
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.rec-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.13);
+}
+
+.rec-imgs {
+    display: flex;
+    height: 90px;
+}
+
+.rec-imgs img {
+    flex: 1;
+    object-fit: cover;
+    height: 100%;
+}
+
+.rec-body {
+    padding: 10px 12px 12px;
+}
+
+.rec-titulo {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--on-surface);
+    margin: 0 0 4px;
+}
+
+.rec-desc {
+    font-size: 11px;
+    color: #666;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.rec-stats {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+    font-size: 11px;
+    color: #999;
+}

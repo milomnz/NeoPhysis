@@ -1,0 +1,15 @@
+<article class="rec-card">
+  <div class="rec-imgs">
+    <img [src]="rec.img1" [alt]="rec.titulo">
+    <img [src]="rec.img2" [alt]="rec.titulo">
+  </div>
+  <div class="rec-body">
+    <h4 class="rec-titulo">{{ rec.titulo }}</h4>
+    <p class="rec-desc">{{ rec.desc }}</p>
+    <div class="rec-stats">
+      <span>❤ {{ rec.likes }}</span>
+      <span>☁ {{ rec.shares }}</span>
+      <span>💬 {{ rec.comments }}</span>
+    </div>
+  </div>
+</article>

@@ -8,6 +8,7 @@ import {
   OnDestroy,
   PLATFORM_ID,
   signal,
+
 } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
@@ -25,7 +26,7 @@ export class SidebarNavComponent implements OnDestroy {
   protected readonly menuOpen = signal(false);
 
   readonly navLinks = [
-    { label: 'Inicio', path: '/' },
+    { label: 'Inicio', path: '/home' },
     { label: 'Foros relevantes', path: '/foros' },
     { label: 'Aliados', path: '/aliados' },
     { label: 'Publicar un foro', path: '/publicar' },
