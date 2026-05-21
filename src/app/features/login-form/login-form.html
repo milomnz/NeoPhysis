@@ -1,0 +1,96 @@
+<!-- @autor LaMendez -->
+
+<div class="login-form">
+  <header class="login-form__header">
+    <h1 class="login-form__title">Iniciar Sesión</h1>
+    <p class="login-form__subtitle">Ingresa a Neophysis</p>
+  </header>
+
+  <form
+    [formGroup]="form"
+    class="login-form__form"
+    (ngSubmit)="submit()"
+    [class.login-form__shake]="shake()"
+  >
+    <div class="login-form__field">
+      <label class="login-form__label" for="email">Correo electrónico</label>
+      <input
+        class="login-form__input"
+        id="email"
+        type="email"
+        placeholder="jane.doe@lab.org"
+        autocomplete="email"
+        formControlName="email"
+        [class.login-form__input--error]="getEmailError()"
+        [attr.aria-describedby]="getEmailError() ? 'email-error' : null"
+      />
+      <p id="email-error" class="login-form__message" [ngClass]="getEmailErrorClass()">
+        {{ getEmailError() }}
+      </p>
+    </div>
+
+    <div class="login-form__field login-form__field--password">
+      <label class="login-form__label" for="password">Contraseña</label>
+      <div class="login-form__password-row">
+        <input
+          class="login-form__input login-form__input--icon"
+          id="password"
+          [type]="showPassword() ? 'text' : 'password'"
+          placeholder="Mín. 8 caracteres"
+          autocomplete="current-password"
+          formControlName="password"
+          [class.login-form__input--error]="getPasswordError()"
+          [attr.aria-describedby]="getPasswordError() ? 'password-error' : null"
+        />
+        <button
+          class="login-form__eye"
+          type="button"
+          [attr.aria-label]="showPassword() ? 'Ocultar contraseña' : 'Mostrar contraseña'"
+          (click)="togglePassword()"
+        >
+          <span class="material-symbols-outlined" aria-hidden="true">{{
+            showPassword() ? 'visibility_off' : 'visibility'
+          }}</span>
+        </button>
+      </div>
+      <p
+        id="password-error"
+        class="login-form__message"
+        [ngClass]="getPasswordError() ? 'login-form__error' : ''"
+      >
+        {{ getPasswordError() }}
+      </p>
+    </div>
+
+    <div class="login-form__options">
+      <label class="login-form__remember">
+        <input type="checkbox" formControlName="remember" /> Recordarme
+      </label>
+    </div>
+
+    <button class="login-form__submit" type="submit" [disabled]="isLoading()">
+      @if (isLoading()) {
+        <span class="login-form__spinner" aria-hidden="true"></span>
+      }
+      @if (isLoading()) {
+        <span>Cargando...</span>
+      }
+      @if (!isLoading()) {
+        <span>Iniciar Sesión</span>
+      }
+    </button>
+
+    @if (loginError()) {
+      <p class="login-form__status login-form__status--error" role="alert">{{ loginError() }}</p>
+    }
+    @if (loginSuccess()) {
+      <p class="login-form__status login-form__status--success" role="status">
+        {{ loginSuccess() }}
+      </p>
+    }
+  </form>
+
+  <footer class="login-form__footer">
+    <a class="login-form__link" routerLink="/registro">¿No tienes cuenta? Regístrate</a>
+  </footer>
+</div>

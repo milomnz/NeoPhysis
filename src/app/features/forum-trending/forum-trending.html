@@ -1,0 +1,26 @@
+<!-- @autor LaMendez -->
+<aside class="forum-trending">
+  <div class="trending-tags">
+    <h4 class="trending-tags__heading">Temas Populares</h4>
+    <div class="trending-tags__list">
+      @for (tag of tags; track tag) {
+        <button type="button" class="trending-tags__tag" [class.trending-tags__tag--active]="activeTag() === tag" (click)="selectTag(tag)">{{ tag }}</button>
+      }
+    </div>
+  </div>
+
+  <div class="forum-stats">
+    <div class="forum-stats__glow" aria-hidden="true"></div>
+    <div class="forum-stats__inner">
+      <h4 class="forum-stats__heading">Estadísticas</h4>
+      <div class="forum-stats__grid">
+        @for (s of stats; track s.label) {
+          <div class="forum-stats__item">
+            <p class="forum-stats__label">{{ s.label }}</p>
+            <p class="forum-stats__value">{{ s.value }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</aside>

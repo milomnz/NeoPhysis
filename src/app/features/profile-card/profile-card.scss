@@ -1,0 +1,202 @@
+/** @autor LaMendez */
+
+.profile-card-wrap { display: flex; flex-direction: column; gap: 1.5rem; }
+
+.profile-card {
+  background: var(--surface-container-lowest);
+  border-radius: var(--border-radius-lg);
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(6,30,41,0.04);
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-card__banner {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 6rem;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  opacity: 0.1;
+}
+
+.profile-card__body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.profile-card__edit-form {
+  display: grid;
+  gap: 1rem;
+  width: 100%;
+  text-align: left;
+}
+
+.profile-card__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.profile-card__label {
+  font-family: var(--font-label);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.profile-card__input,
+.profile-card__textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--surface-border);
+  background: var(--surface-container);
+  color: var(--on-surface);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.profile-card__textarea { resize: vertical; min-height: 6rem; }
+
+.profile-card__edit-actions {
+  display: flex;
+  gap: 0.75rem;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.profile-card__edit-btn--primary {
+  background: var(--secondary);
+  color: var(--on-secondary);
+}
+
+.profile-card__avatar-wrap {
+  width: 6rem; height: 6rem;
+  border-radius: 50%;
+  border: 4px solid var(--surface-container-lowest);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.profile-card__avatar { width: 100%; height: 100%; object-fit: cover; }
+
+.profile-card__name {
+  font-family: var(--font-headline);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--on-tertiary-fixed, #061e29);
+  margin-bottom: 0.25rem;
+}
+
+.profile-card__title {
+  font-family: var(--font-label);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--secondary);
+  margin-bottom: 1rem;
+}
+
+.profile-card__bio {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--on-surface-variant);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.profile-card__stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.profile-card__stat {
+  background: var(--surface-container-low);
+  border-radius: var(--border-radius);
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.profile-card__stat-label {
+  font-family: var(--font-label);
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--on-surface-variant);
+  opacity: 0.6;
+}
+
+.profile-card__stat-value {
+  font-family: var(--font-headline);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.profile-card__edit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.875rem;
+  background: var(--primary-container);
+  color: #fff;
+  border: none;
+  border-radius: var(--border-radius-full);
+  font-family: var(--font-label);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+
+  &:hover { opacity: 0.9; }
+}
+
+.profile-info {
+  background: var(--surface-container-low);
+  border-radius: var(--border-radius-lg);
+  padding: 1.5rem;
+}
+
+.profile-info__heading {
+  font-family: var(--font-label);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.profile-info__list { list-style: none; display: flex; flex-direction: column; gap: 0.875rem; }
+
+.profile-info__item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--on-surface-variant);
+}
+
+.profile-info__icon { color: var(--secondary); font-size: 1.125rem; flex-shrink: 0; }
+
+.profile-info__link {
+  color: var(--primary-container);
+  text-decoration: none;
+  &:hover { text-decoration: underline; }
+}

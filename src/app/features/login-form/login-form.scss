@@ -1,0 +1,184 @@
+/** @autor LaMendez */
+
+.login-form {
+  max-width: 28rem;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.login-form__header { margin-bottom: 2.5rem; text-align: center; }
+
+.login-form__title {
+  font-family: var(--font-headline);
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--on-tertiary-fixed, #061e29);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+.login-form__subtitle {
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  color: var(--on-surface-variant);
+  margin-top: 0.75rem;
+}
+
+.login-form__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.login-form__field { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.login-form__field--password .login-form__password-row {
+  position: relative;
+}
+
+.login-form__input--icon {
+  padding-right: 3.5rem;
+}
+
+.login-form__eye {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: var(--on-surface-variant);
+  cursor: pointer;
+  padding: 0;
+  font-size: 1.1rem;
+}
+
+.login-form__eye .material-symbols-outlined {
+  font-size: 1.1rem;
+}
+
+.login-form__message {
+  min-height: 1.25rem;
+  margin: 0.25rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+}
+
+.login-form__label {
+  font-family: var(--font-label);
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--primary);
+}
+
+.login-form__input {
+  width: 100%;
+  padding: 1rem;
+  background: var(--surface-container);
+  border: 1px solid transparent;
+  border-radius: var(--border-radius-lg);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--on-surface);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+
+  &::placeholder { color: var(--on-surface-variant); opacity: 0.4; }
+  &:focus { border-color: var(--primary-container); box-shadow: 0 0 0 3px rgba(29,84,109,0.12); }
+}
+
+.login-form__input--error { border-color: #d93025; }
+
+.login-form__options { display: flex; align-items: center; justify-content: flex-start; }
+
+.login-form__remember {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--on-surface-variant);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.login-form__error {
+  font-size: 0.8125rem;
+  color: #d93025;
+  margin: 0.25rem 0 0;
+}
+
+.login-form__hint {
+  font-size: 0.8125rem;
+  color: var(--on-surface-variant);
+  margin: 0.25rem 0 0;
+}
+
+.login-form__submit {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  background: var(--secondary);
+  color: var(--on-secondary);
+  border: none;
+  border-radius: var(--border-radius-lg);
+  font-family: var(--font-label);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(47,103,106,0.2);
+  transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+
+  &:hover { transform: scale(1.01); box-shadow: 0 8px 24px rgba(47,103,106,0.3); }
+  &:active { transform: scale(0.98); }
+  &:disabled { opacity: 0.6; cursor: not-allowed; }
+}
+
+.login-form__spinner {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  margin-right: 0.75rem;
+  animation: spin 0.8s linear infinite;
+}
+
+.login-form__status {
+  margin-top: 1rem;
+  font-size: 0.9375rem;
+  text-align: center;
+}
+
+.login-form__status--error { color: #d93025; }
+.login-form__status--success { color: #1b5e20; }
+
+.login-form__footer { margin-top: 2rem; text-align: center; }
+
+.login-form__link {
+  font-family: var(--font-label);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--primary-container);
+  text-decoration: none;
+  transition: color 0.2s;
+
+  &:hover { color: var(--primary); text-decoration: underline; text-underline-offset: 4px; }
+}
+
+.login-form__shake { animation: shake 0.35s ease-in-out; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(6px); }
+}

@@ -1,0 +1,24 @@
+<!-- @autor LaMendez -->
+
+<div class="auth-panel" aria-hidden="true">
+  <div class="auth-panel__bg" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBdvdGCFeX0uOQQtk_CPHwbcmBgpZFfeq9AAHnyrVDjjWJ6c5dpTwLmBzs6BqBJJPhBv7YRlNB3KHVXfvq7yJuk6kpwMwWcxKdE2jpUWz5RZraMC-_oABvSIZPBXmk_SbKrZMghZicdw7X6bOD0ESui2Cj7bZc2709l0S1u-eR4NXOtOea79cjaarA3DuYMoLbB_UIn9t8wDLZV-B4kZXSQYAvCTSOKftGykju3ZZtGHb5Ec5pmm3DWomM1Ur5e6Hnsgol1XhGkPYzE')"></div>
+  <div class="auth-panel__gradient"></div>
+  <div class="auth-panel__content">
+    <div class="auth-panel__accent"></div>
+    <h2 class="auth-panel__title">NEOPHYSIS</h2>
+    <p class="auth-panel__tagline">
+      Lorem ipsum dolor sit amet consectetur adipiscing elit ante dictumst at,
+      augue venenatis habitasse convallis ut sagittis inceptos eget a sollicitudin, arcu etiam
+    </p>
+    <div class="auth-panel__community">
+      <div class="auth-panel__avatars">
+        @for (r of researchers; track r.alt) {
+          <div class="auth-panel__avatar">
+            <img [src]="r.src" [alt]="r.alt" loading="lazy" />
+          </div>
+        }
+      </div>
+      <span class="auth-panel__count">12k+ Investigadores</span>
+    </div>
+  </div>
+</div>

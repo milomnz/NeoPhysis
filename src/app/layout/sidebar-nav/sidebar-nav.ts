@@ -27,12 +27,12 @@ export class SidebarNavComponent implements OnDestroy {
 
   readonly navLinks = [
     { label: 'Inicio', path: '/home' },
-    { label: 'Foros relevantes', path: '/foros' },
-    { label: 'Aliados', path: '/aliados' },
-    { label: 'Publicar un foro', path: '/publicar' },
+    { label: 'Foros', path: '/foros' },
+    { label: 'Perfil', path: '/perfil' },
+    { label: 'Publicar', path: '/publicar' },
+    { label: 'Iniciar Sesión', path: '/login' },
+    { label: 'Registrarse', path: '/registro' },
     { label: 'Acerca de', path: '/acerca' },
-    { label: 'Contacto', path: '/contacto' },
-    { label: 'Acuerdos legales', path: '/legal' },
   ];
 
   toggleMenu(): void {
