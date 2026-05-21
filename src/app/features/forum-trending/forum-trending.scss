@@ -1,0 +1,15 @@
+/** @autor LaMendez */
+.forum-trending { display: flex; flex-direction: column; gap: 2rem; width: 100%; @media (min-width: 1024px) { width: 22.5rem; flex-shrink: 0; } }
+
+.trending-tags { background: var(--surface-container-low); border-radius: 2rem; padding: 2rem; }
+.trending-tags__heading { font-family: var(--font-headline); font-size: 1.125rem; font-weight: 700; color: var(--primary); margin-bottom: 1.5rem; }
+.trending-tags__list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.trending-tags__tag { padding: 0.5rem 1rem; border-radius: var(--border-radius-full); background: var(--surface-container-lowest); font-family: var(--font-label); font-size: 0.75rem; font-weight: 700; color: var(--primary); border: 1px solid var(--outline-variant); cursor: pointer; transition: background 0.2s, color 0.2s; &:hover { background: var(--surface-container); } &--active { background: var(--secondary); border-color: var(--secondary); color: var(--on-secondary); } }
+
+.forum-stats { background: var(--primary-container); border-radius: 2rem; padding: 2rem; color: #fff; position: relative; overflow: hidden; }
+.forum-stats__glow { position: absolute; bottom: -2.5rem; right: -2.5rem; width: 10rem; height: 10rem; background: rgba(47,103,106,0.2); border-radius: 50%; filter: blur(2rem); pointer-events: none; }
+.forum-stats__inner { position: relative; z-index: 1; }
+.forum-stats__heading { font-family: var(--font-headline); font-size: 1.125rem; font-weight: 700; margin-bottom: 1.5rem; }
+.forum-stats__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.forum-stats__label { font-family: var(--font-label); font-size: 0.625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(194,232,255,0.55); margin-bottom: 0.25rem; }
+.forum-stats__value { font-family: var(--font-headline); font-size: 1.5rem; font-weight: 700; }

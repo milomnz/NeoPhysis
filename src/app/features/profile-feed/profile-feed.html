@@ -1,0 +1,110 @@
+<!-- @autor LaMendez -->
+
+<section class="profile-feed">
+  <div class="profile-feed__tabs" role="tablist" aria-label="Secciones del perfil">
+    <button
+      class="profile-feed__tab"
+      role="tab"
+      [attr.aria-selected]="activeTab() === 'publicaciones'"
+      [class.profile-feed__tab--active]="activeTab() === 'publicaciones'"
+      (click)="setTab('publicaciones')"
+      type="button"
+    >
+      <span class="material-symbols-outlined" aria-hidden="true">grid_view</span> Publicaciones
+    </button>
+    <button
+      class="profile-feed__tab"
+      role="tab"
+      [attr.aria-selected]="activeTab() === 'comentadas'"
+      [class.profile-feed__tab--active]="activeTab() === 'comentadas'"
+      (click)="setTab('comentadas')"
+      type="button"
+    >
+      <span class="material-symbols-outlined" aria-hidden="true">chat_bubble</span> Comentadas
+    </button>
+    <button
+      class="profile-feed__tab"
+      role="tab"
+      [attr.aria-selected]="activeTab() === 'guardado'"
+      [class.profile-feed__tab--active]="activeTab() === 'guardado'"
+      (click)="setTab('guardado')"
+      type="button"
+    >
+      <span class="material-symbols-outlined" aria-hidden="true">bookmark</span> Guardado
+    </button>
+  </div>
+
+  <div class="profile-feed__content">
+    @if (activeTab() === 'publicaciones') {
+      <div class="profile-feed__empty" role="tabpanel" aria-label="Tus publicaciones">
+        <div class="profile-feed__empty-icon">
+          <span class="material-symbols-outlined" aria-hidden="true">article</span>
+        </div>
+        <h2 class="profile-feed__empty-title">Aún no tienes ninguna publicación</h2>
+        <p class="profile-feed__empty-desc">
+          Empieza a compartir tus hallazgos, dilemas o investigaciones con la comunidad.
+        </p>
+      </div>
+    }
+    @if (activeTab() === 'comentadas') {
+      <div class="profile-feed__empty" role="tabpanel" aria-label="Publicaciones comentadas">
+        <div class="profile-feed__empty-icon">
+          <span class="material-symbols-outlined" aria-hidden="true">chat_bubble</span>
+        </div>
+        <h2 class="profile-feed__empty-title">Todavía no has comentado nada</h2>
+        <p class="profile-feed__empty-desc">
+          Sigue a tu comunidad para empezar a interactuar con publicaciones y debates.
+        </p>
+      </div>
+    }
+    @if (activeTab() === 'guardado') {
+      @if (savedPosts().length === 0) {
+        <div class="profile-feed__empty" role="tabpanel" aria-label="Publicaciones guardadas">
+          <div class="profile-feed__empty-icon">
+            <span class="material-symbols-outlined" aria-hidden="true">bookmark</span>
+          </div>
+          <h2 class="profile-feed__empty-title">No hay publicaciones guardadas</h2>
+          <p class="profile-feed__empty-desc">
+            Guarda tus artículos favoritos para revisarlos después.
+          </p>
+        </div>
+      } @else {
+        <div class="profile-feed__saved-list" role="tabpanel" aria-label="Publicaciones guardadas">
+          @for (post of savedPosts(); track post.id) {
+            <div class="profile-feed__saved-card">
+              <div class="profile-feed__saved-meta">
+                <img class="profile-feed__saved-avatar" [src]="post.avatar" [alt]="post.author" loading="lazy" />
+                <span class="profile-feed__saved-author">{{ post.author }}</span>
+                <span class="profile-feed__saved-time">• {{ post.time }}</span>
+                <span class="profile-feed__saved-category">{{ post.category }}</span>
+              </div>
+              <h3 class="profile-feed__saved-title">{{ post.title }}</h3>
+              <p class="profile-feed__saved-excerpt">{{ post.excerpt }}</p>
+              <div class="profile-feed__saved-tags">
+                @for (tag of post.tags; track tag) {
+                  <span class="profile-feed__saved-tag">{{ tag }}</span>
+                }
+              </div>
+            </div>
+          }
+        </div>
+      }
+    }
+  </div>
+
+  <div class="profile-feed__topics">
+    <h3 class="profile-feed__topics-heading">Temas de interés para ti</h3>
+    <div class="profile-feed__topic-list">
+      @for (topic of selectedTopics(); track topic) {
+        <button
+          class="profile-feed__topic-tag"
+          type="button"
+          [attr.aria-label]="'Eliminar tema ' + topic"
+          (click)="removeTopic(topic)"
+        >
+          {{ topic }} <span class="material-symbols-outlined" aria-hidden="true">close</span>
+        </button>
+      }
+    </div>
+  </div>
+</section>

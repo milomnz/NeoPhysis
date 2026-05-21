@@ -1,0 +1,35 @@
+/** @autor milomnz */
+
+.neo-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.75rem, 3vw, 1.5rem);
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.neo-header__rule {
+  flex: 1 1 0;
+  min-width: 1rem;
+  height: 0;
+  border: none;
+  border-top: 1px solid var(--color-hr);
+  align-self: center;
+}
+
+.neo-header__brand {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.neo-header__logo {
+  display: block;
+  height: auto;
+  width: auto;
+  max-width: min(280px, 72vw);
+  max-height: clamp(2.5rem, 8vw, 3.75rem);
+  object-fit: contain;
+}

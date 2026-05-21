@@ -1,0 +1,103 @@
+<!-- @autor LaMendez -->
+
+<aside class="profile-card-wrap">
+  <div class="profile-card">
+    <div class="profile-card__banner" aria-hidden="true"></div>
+    <div class="profile-card__body">
+      <div class="profile-card__avatar-wrap" (click)="onAvatarClick()" title="Cambiar foto de perfil" style="cursor:pointer; position:relative;">
+        <img
+          class="profile-card__avatar"
+          [src]="user().avatarSrc"
+          [alt]="user().name"
+          loading="eager"
+        />
+        <div class="profile-card__avatar-overlay">
+          <span class="material-symbols-outlined" aria-hidden="true">photo_camera</span>
+        </div>
+      </div>
+
+      @if (editMode()) {
+        <form class="profile-card__edit-form" [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+          <div class="profile-card__field">
+            <label class="profile-card__label" for="name">Nombre</label>
+            <input class="profile-card__input" id="name" formControlName="name" />
+          </div>
+          <div class="profile-card__field">
+            <label class="profile-card__label" for="title">Título</label>
+            <input class="profile-card__input" id="title" formControlName="title" />
+          </div>
+          <div class="profile-card__field">
+            <label class="profile-card__label" for="bio">Bio</label>
+            <textarea
+              class="profile-card__textarea"
+              id="bio"
+              rows="3"
+              formControlName="bio"
+            ></textarea>
+          </div>
+          <div class="profile-card__field">
+            <label class="profile-card__label" for="location">Ubicación</label>
+            <input class="profile-card__input" id="location" formControlName="location" />
+          </div>
+          <div class="profile-card__field">
+            <label class="profile-card__label" for="website">Sitio web</label>
+            <input class="profile-card__input" id="website" formControlName="website" />
+          </div>
+          <div class="profile-card__edit-actions">
+            <button class="profile-card__edit-btn" type="button" (click)="toggleEdit()">
+              Cancelar
+            </button>
+            <button
+              class="profile-card__edit-btn profile-card__edit-btn--primary"
+              type="submit"
+              [disabled]="!isValid()"
+            >
+              Guardar
+            </button>
+          </div>
+        </form>
+      }
+      @if (!editMode()) {
+        <h1 class="profile-card__name">{{ user().name }}</h1>
+        <p class="profile-card__title">{{ user().title }}</p>
+        <p class="profile-card__bio">{{ user().bio }}</p>
+        <div class="profile-card__stats">
+          <div class="profile-card__stat">
+            <span class="profile-card__stat-label">Publicaciones</span>
+            <span class="profile-card__stat-value">{{ user().publications }}</span>
+          </div>
+          <div class="profile-card__stat">
+            <span class="profile-card__stat-label">Comentarios</span>
+            <span class="profile-card__stat-value">{{ user().comments }}</span>
+          </div>
+        </div>
+        <button class="profile-card__edit-btn" type="button" (click)="toggleEdit()">
+          <span class="material-symbols-outlined" aria-hidden="true">edit</span>
+          Editar Perfil
+        </button>
+      }
+    </div>
+  </div>
+
+  <div class="profile-info">
+    <h3 class="profile-info__heading">Información</h3>
+    <ul class="profile-info__list">
+      <li class="profile-info__item">
+        <span class="material-symbols-outlined profile-info__icon" aria-hidden="true"
+          >location_on</span
+        >
+        <span>{{ user().location }}</span>
+      </li>
+      <li class="profile-info__item">
+        <span class="material-symbols-outlined profile-info__icon" aria-hidden="true"
+          >calendar_today</span
+        >
+        <span>Miembro desde {{ user().joinDate }}</span>
+      </li>
+      <li class="profile-info__item">
+        <span class="material-symbols-outlined profile-info__icon" aria-hidden="true">link</span>
+        <a class="profile-info__link" href="#">{{ user().website }}</a>
+      </li>
+    </ul>
+  </div>
+</aside>

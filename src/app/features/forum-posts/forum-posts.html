@@ -1,0 +1,142 @@
+<!-- @autor LaMendez -->
+<section class="forum-posts">
+  <div class="forum-posts__controls">
+    <div class="forum-posts__heading-group">
+      <h2 class="forum-posts__heading">Sugerencias para ti</h2>
+      @if (selectedCategory() || selectedTag()) {
+        <p class="forum-posts__active-filter">
+          Filtrando por {{ selectedCategory() || selectedTag() }}
+        </p>
+      }
+    </div>
+
+    <div class="forum-posts__actions">
+      <label class="forum-posts__search">
+        <span class="material-symbols-outlined" aria-hidden="true">search</span>
+        <input
+          type="search"
+          placeholder="Buscar publicaciones"
+          aria-label="Buscar publicaciones"
+          [value]="searchQuery()"
+          (input)="updateSearch($event.target.value)"
+        />
+      </label>
+      <div class="forum-posts__sort">
+        <button
+          class="forum-posts__sort-btn forum-posts__sort-btn--active"
+          [attr.aria-pressed]="true"
+          type="button"
+        >
+          Popular
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="forum-posts__toast" [class.forum-posts__toast--visible]="toast()" role="status">
+    {{ toast() }}
+  </div>
+
+  <div class="forum-posts__list">
+    @for (post of filteredPosts(); track post) {
+      <article
+        class="post-card"
+        tabindex="0"
+        (click)="goToForum(post)"
+        (keydown.enter)="goToForum(post)"
+        (keydown.space)="goToForum(post)"
+        style="cursor: pointer"
+      >
+        <div class="post-card__votes">
+          <button
+            class="post-card__vote-btn post-card__vote-btn--up"
+            [class.post-card__vote-btn--active]="getState(post).vote === 'up'"
+            [attr.aria-pressed]="getState(post).vote === 'up'"
+            type="button"
+            aria-label="Votar a favor"
+            (click)="toggleVote(post, 'up', $event)"
+          >
+            <span class="material-symbols-outlined" aria-hidden="true">expand_less</span>
+          </button>
+          <span class="post-card__vote-count">{{
+            post.votes +
+              (getState(post).vote === 'up' ? 1 : getState(post).vote === 'down' ? -1 : 0)
+          }}</span>
+          <button
+            class="post-card__vote-btn post-card__vote-btn--down"
+            [class.post-card__vote-btn--active]="getState(post).vote === 'down'"
+            [attr.aria-pressed]="getState(post).vote === 'down'"
+            type="button"
+            aria-label="Votar en contra"
+            (click)="toggleVote(post, 'down', $event)"
+          >
+            <span class="material-symbols-outlined" aria-hidden="true">expand_more</span>
+          </button>
+        </div>
+        <div class="post-card__body">
+          <div class="post-card__meta">
+            <img class="post-card__avatar" [src]="post.avatar" [alt]="post.author" loading="lazy" />
+            <span class="post-card__author">{{ post.author }}</span>
+            <span class="post-card__time">• {{ post.time }}</span>
+            <span
+              class="post-card__category"
+              [class.post-card__category--dark]="post.categoryDark"
+              >{{ post.category }}</span
+            >
+          </div>
+          <h3 class="post-card__title">{{ post.title }}</h3>
+          <p class="post-card__excerpt">{{ post.excerpt }}</p>
+          <div class="post-card__tag-list">
+            @for (tag of post.tags; track tag) {
+              <span class="post-card__tag">{{ tag }}</span>
+            }
+          </div>
+          <div class="post-card__actions">
+            <button class="post-card__action" type="button" (click)="toggleComments(post, $event)">
+              <span class="material-symbols-outlined" aria-hidden="true">chat_bubble</span
+              >{{ post.comments }} Comentarios
+            </button>
+            <button class="post-card__action" type="button" (click)="copyLink(post, $event)">
+              <span class="material-symbols-outlined" aria-hidden="true">share</span>Compartir
+            </button>
+            <button
+              class="post-card__action post-card__action--end"
+              type="button"
+              aria-label="Guardar"
+              [attr.aria-pressed]="getState(post).bookmarked"
+              (click)="toggleBookmark(post, $event)"
+            >
+              <span class="material-symbols-outlined" aria-hidden="true">{{
+                getState(post).bookmarked ? 'bookmark' : 'bookmark_border'
+              }}</span>
+              {{ getState(post).bookmarked ? 'Guardado' : 'Guardar' }}
+            </button>
+          </div>
+          @if (getState(post).showComments) {
+            <div class="post-card__comments">
+              @for (
+                comment of [
+                  'Interesante enfoque, especialmente en la parte de seguridad alimentaria.',
+                  'Gracias por compartir los hallazgos de secuenciación.',
+                  'Creo que el uso de nanoporos cambiará los protocolos de laboratorio.',
+                ];
+                track comment
+              ) {
+                <div class="post-card__comment">
+                  <span class="material-symbols-outlined" aria-hidden="true">comment</span>
+                  <p>{{ comment }}</p>
+                </div>
+              }
+            </div>
+          }
+        </div>
+      </article>
+    }
+
+    @if (filteredPosts().length === 0) {
+      <div class="forum-posts__empty" role="status">
+        No se encontraron publicaciones con los filtros actuales.
+      </div>
+    }
+  </div>
+</section>

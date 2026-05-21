@@ -1,0 +1,13 @@
+/** @autor LaMendez */
+.forum-feed-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  app-forum-posts { flex: 1; min-width: 0; }
+}

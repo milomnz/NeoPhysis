@@ -1,0 +1,115 @@
+<!-- ══════ HERO BANNER ══════ -->
+<div class="page-shell">
+  <app-sidebar-nav></app-sidebar-nav>
+  <main id="main-content" style="padding: 0;">
+    <section class="about-hero">
+      <div class="hero-bg-img"></div>
+      <div class="hero-leaves hero-leaves--left"></div>
+      <div class="hero-leaves hero-leaves--right"></div>
+      <div class="hero-content">
+        <div class="hero-logo-wrap">
+          <span class="hero-logo-text">NEO PHYSIS</span>
+        </div>
+        <h1 class="hero-title">Quiénes Somos</h1>
+      </div>
+    </section>
+
+    <!-- ══════ MISIÓN ══════ -->
+    <section class="mision-band fade-item" #animTarget>
+      <p class="mision-eyebrow">NUESTRA MISIÓN</p>
+      <h2 class="mision-headline">
+        Construir un movimiento por una<br>ciencia más viva y conectada al territorio.
+      </h2>
+    </section>
+
+    <!-- ══════ HISTORIA FUNDADORA ══════ -->
+    <section class="founding-section">
+      <div class="founding-img-col fade-item" #animTarget>
+        <div class="founding-img-wrap">
+          <img
+            src="https://picsum.photos/seed/agrofound/680/520"
+            alt="Equipo Neo Physis en el campo"
+            class="founding-img"
+          >
+          <div class="founding-img-badge">
+            <span class="badge-text">Desde el territorio</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="founding-text-col fade-item" #animTarget>
+        <h2 class="founding-title">Historia fundadora</h2>
+
+        <p class="founding-p">
+          Todo comenzó con una pregunta incómoda: ¿por qué la investigación agrícola
+          más relevante para los campesinos colombianos estaba encerrada en artículos
+          que nadie fuera de la academia podía leer ni aplicar?
+        </p>
+        <p class="founding-p">
+          Queríamos tender puentes. Conectar el laboratorio con la finca, el dato con
+          la decisión, el investigador con la comunidad. Así nació Neo Physis: una
+          plataforma que hace de la ciencia aplicada un bien común.
+        </p>
+        <p class="founding-p">
+          Hoy trabajamos con investigadores de todo el país para traducir hallazgos
+          en soluciones reales, sostenibles y accesibles para el campo colombiano.
+        </p>
+
+        <div class="founding-firma-wrap">
+          <div class="firma-info">
+            <span class="firma-nombre">Juan Camilo Henao</span>
+            <span class="firma-cargo">Co-Fundador &amp; Director General</span>
+          </div>
+          <div class="firma-svg-wrap">
+            <!-- Firma SVG estilizada -->
+            <svg class="firma-svg" viewBox="0 0 240 70" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10,50 C20,10 40,60 60,30 C75,10 85,55 105,35 C120,18 130,58 155,38 C170,25 178,52 200,42 C215,35 225,48 235,44"
+                fill="none" stroke="var(--primary)" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round"
+                class="firma-path"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════ CONTADORES ══════ -->
+    <section class="contadores-section fade-item" #animTarget #counterSection>
+      @for (c of contadores; track c.id) {
+        <div class="contador-item">
+          <span class="contador-num">{{ c.current }}{{ c.sufijo }}</span>
+          <span class="contador-label">{{ c.label }}</span>
+        </div>
+      }
+    </section>
+
+    <!-- ══════ MISIONES / PILARES ══════ -->
+    <section class="pilares-section">
+      <h2 class="pilares-titulo fade-item" #animTarget>Nuestros Pilares</h2>
+
+      <div class="pilares-grid">
+        @for (m of misiones; track m.id; let i = $index) {
+          <article class="pilar-card fade-item" #animTarget
+            [style.transition-delay]="(i * 0.15) + 's'">
+            <div class="pilar-img-wrap">
+              <img [src]="m.img" [alt]="m.titulo" class="pilar-img">
+              <div class="pilar-img-overlay"></div>
+            </div>
+            <div class="pilar-body">
+              <h3 class="pilar-title">{{ m.titulo }}</h3>
+              <p class="pilar-desc">{{ m.desc }}</p>
+            </div>
+          </article>
+        }
+      </div>
+    </section>
+
+    <section class="cta-mision fade-item" #animTarget>
+      <div class="cta-clouds"></div>
+      <div class="cta-content">
+        <h2 class="cta-title">Conoce más sobre nuestra misión</h2>
+        <a class="cta-btn" href="#">EXPLORAR →</a>
+      </div>
+    </section>
+  </main>
+</div>

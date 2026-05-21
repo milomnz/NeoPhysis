@@ -1,0 +1,279 @@
+/** @autor LaMendez */
+
+.register-form {
+  max-width: 36rem;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.register-form__header { margin-bottom: 2rem; text-align: center; }
+
+.register-form__title {
+  font-family: var(--font-headline);
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--on-tertiary-fixed, #061e29);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+.register-form__steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.register-form__step {
+  border: 1px solid var(--surface-border);
+  border-radius: var(--border-radius-full);
+  background: var(--surface-container);
+  color: var(--on-surface-variant);
+  padding: 0.85rem 1rem;
+  font-family: var(--font-label);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.register-form__step--active {
+  background: var(--secondary);
+  color: var(--on-secondary);
+}
+
+.register-form__form { display: flex; flex-direction: column; gap: 1.5rem; }
+
+.register-form__row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+
+  @media (min-width: 520px) { grid-template-columns: 1fr 1fr; }
+}
+
+.register-form__field { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.register-form__label {
+  font-family: var(--font-label);
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--primary);
+}
+
+.register-form__input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  background: var(--surface-container);
+  border: 1px solid transparent;
+  border-radius: var(--border-radius-lg);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--on-surface);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+
+  &::placeholder { color: var(--on-surface-variant); opacity: 0.4; }
+  &:focus { border-color: var(--primary-container); box-shadow: 0 0 0 3px rgba(29,84,109,0.12); }
+}
+
+.register-form__avatar-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.register-form__avatar-card {
+  border: 1px solid var(--surface-border);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  background: var(--surface-container);
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s;
+  text-align: left;
+  padding: 0;
+}
+
+.register-form__avatar-card--selected {
+  border-color: var(--secondary);
+  transform: translateY(-2px);
+}
+
+.register-form__avatar-image {
+  width: 100%;
+  height: 7rem;
+  object-fit: cover;
+}
+
+.register-form__avatar-label {
+  display: block;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-label);
+  font-size: 0.875rem;
+  color: var(--on-surface);
+}
+
+.register-form__helper {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--on-surface-variant);
+}
+
+.register-form__error {
+  font-size: 0.8125rem;
+  color: #d93025;
+}
+
+.register-form__review {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: center;
+  background: var(--surface-container);
+  border-radius: var(--border-radius-lg);
+  padding: 1.5rem;
+}
+
+.register-form__review-avatar {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid var(--surface-border);
+}
+
+.register-form__review-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.register-form__review-details p {
+  margin: 0.35rem 0;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--on-surface-variant);
+}
+
+.register-form__actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.register-form__strength {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.register-form__strength-bar {
+  flex: 1;
+  min-height: 0.5rem;
+  border-radius: 999px;
+  background: rgba(98, 112, 124, 0.18);
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.register-form__strength-bar--active {
+  transform: scaleY(1.06);
+}
+
+.register-form__strength--fuerte .register-form__strength-bar--first,
+.register-form__strength--fuerte .register-form__strength-bar--second,
+.register-form__strength--fuerte .register-form__strength-bar--third {
+  background: #1b5e20;
+}
+
+.register-form__strength--media .register-form__strength-bar--first,
+.register-form__strength--media .register-form__strength-bar--second {
+  background: #f57c00;
+}
+
+.register-form__strength--media .register-form__strength-bar--third {
+  background: rgba(98, 112, 124, 0.18);
+}
+
+.register-form__strength--débil .register-form__strength-bar--first {
+  background: #d93025;
+}
+
+.register-form__strength--débil .register-form__strength-bar--second,
+.register-form__strength--débil .register-form__strength-bar--third {
+  background: rgba(98, 112, 124, 0.18);
+}
+
+.register-form__hint {
+  font-size: 0.8125rem;
+  color: var(--on-surface-variant);
+  margin: 0.75rem 0 0;
+}
+
+.register-form__secondary {
+  padding: 0.9rem 1.25rem;
+  background: var(--surface-container);
+  color: var(--on-surface-variant);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--border-radius-lg);
+  font-family: var(--font-label);
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.register-form__submit {
+  padding: 0.9rem 1.25rem;
+  background: var(--secondary);
+  color: var(--on-secondary);
+  border: none;
+  border-radius: var(--border-radius-lg);
+  font-family: var(--font-label);
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.register-form__submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.register-form__spinner {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 0.75rem;
+  animation: spin 0.8s linear infinite;
+}
+
+.register-form__status {
+  margin-top: 1rem;
+  font-size: 0.9375rem;
+  text-align: center;
+}
+
+.register-form__status--success { color: #1b5e20; }
+
+.register-form__strength--fuerte { color: #1b5e20; }
+.register-form__strength--media { color: #f57c00; }
+.register-form__strength--débil { color: #d93025; }
+
+.register-form__footer { margin-top: 2rem; text-align: center; }
+
+.register-form__link {
+  font-family: var(--font-label);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--primary-container);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.register-form__link:hover { color: var(--primary); text-decoration: underline; text-underline-offset: 4px; }
+
+@keyframes spin { to { transform: rotate(360deg); } }

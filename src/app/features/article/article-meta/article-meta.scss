@@ -1,0 +1,33 @@
+/** @autor milomnz */
+
+.meta-sidebar {
+  width: 16rem;
+  flex-shrink: 0;
+
+  &__card {
+    background-color: var(--surface-container-low);
+    padding: 1.5rem;
+    border-radius: var(--border-radius-lg, 8px);
+    margin-bottom: 1.5rem;
+  }
+
+  &__field {
+    margin-bottom: 1rem;
+
+    &:last-child { margin-bottom: 0; }
+  }
+
+  &__heading {
+    font-family: var(--font-ui);
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--on-surface);
+  }
+
+  &__text {
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    color: var(--on-surface-variant);
+    margin-top: 0.25rem;
+  }
+}

@@ -1,0 +1,15 @@
+/** @autor LaMendez */
+.forum-cats { margin-bottom: 4rem; }
+.forum-cats__header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; gap: 1rem; }
+.forum-cats__title { font-family: var(--font-headline); font-size: 1.5rem; font-weight: 700; color: var(--primary); letter-spacing: -0.015em; }
+.forum-cats__subtitle { font-family: var(--font-body); color: var(--on-surface-variant); opacity: 0.6; margin-top: 0.25rem; }
+.forum-cats__see-all { font-family: var(--font-label); font-size: 0.875rem; font-weight: 700; color: var(--primary-container); background: none; border: none; cursor: pointer; white-space: nowrap; &:hover { text-decoration: underline; text-underline-offset: 4px; } }
+.forum-cats__grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; @media (min-width: 768px) { grid-template-columns: repeat(3, 1fr); } }
+
+.cat-card { position: relative; overflow: hidden; border-radius: 1.5rem; background: var(--surface-container-low); padding: 2rem; height: 20rem; display: flex; flex-direction: column; justify-content: center; transition: background 0.2s; &:hover { background: var(--surface-container-high); } &--dark { background: var(--primary-container); color: #fff; &:hover { background: #1a4d65; } .cat-card__name { color: #fff; } .cat-card__desc { color: rgba(194,232,255,0.7); } .cat-card__count { background: rgba(255,255,255,0.12); color: #fff; } .cat-card__icon { background: var(--secondary); } } &--active { border: 1px solid var(--secondary); box-shadow: 0 16px 32px rgba(41,72,103,0.12); transform: translateY(-2px); } }
+.cat-card__icon { position: absolute; top: 2rem; left: 2rem; width: 3rem; height: 3rem; border-radius: var(--border-radius-lg); background: var(--primary-container); display: flex; align-items: center; justify-content: center; color: #fff; .material-symbols-outlined { font-size: 1.5rem; } }
+.cat-card__name { font-family: var(--font-headline); font-size: 1.5rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+.cat-card__desc { font-family: var(--font-body); font-size: 0.8125rem; color: var(--on-surface-variant); line-height: 1.6; margin-bottom: 1rem; }
+.cat-card__count { display: inline-block; padding: 0.25rem 0.75rem; border-radius: var(--border-radius-full); background: #fff; font-family: var(--font-label); font-size: 0.625rem; font-weight: 700; text-transform: uppercase; color: var(--primary); }
+
+.cat-card__body { padding-top: 3.5rem; }
