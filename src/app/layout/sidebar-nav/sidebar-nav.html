@@ -1,0 +1,45 @@
+<!-- @autor milomnz -->
+
+<div class="sidebar-nav">
+  <button
+    type="button"
+    class="sidebar-nav__toggle"
+    [class.sidebar-nav__toggle--open]="menuOpen()"
+    (click)="toggleMenu()"
+    [attr.aria-expanded]="menuOpen()"
+    aria-controls="sidebar-panel"
+    aria-label="Menú de navegación"
+  >
+    <span class="sidebar-nav__toggle-bar" aria-hidden="true"></span>
+    <span class="sidebar-nav__toggle-bar" aria-hidden="true"></span>
+    <span class="sidebar-nav__toggle-bar" aria-hidden="true"></span>
+  </button>
+
+  <div
+    class="sidebar-nav__scrim"
+    [class.sidebar-nav__scrim--visible]="menuOpen()"
+    (click)="closeMenu()"
+    role="presentation"
+    tabindex="-1"
+    aria-hidden="true"
+  ></div>
+
+  <aside
+    id="sidebar-panel"
+    class="sidebar-nav__panel"
+    [class.sidebar-nav__panel--open]="menuOpen()"
+  >
+    <nav class="sidebar-nav__list" aria-label="Principal">
+      @for (link of navLinks; track link.path) {
+        <a
+          [routerLink]="link.path"
+          routerLinkActive="sidebar-nav__link--active"
+          [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+          (click)="onNavClick()"
+        >
+          {{ link.label }}
+        </a>
+      }
+    </nav>
+  </aside>
+</div>

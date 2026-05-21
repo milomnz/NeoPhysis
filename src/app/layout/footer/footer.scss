@@ -1,0 +1,51 @@
+/** @autor milomnz */
+
+.page-footer {
+    margin-top: 8rem;
+    padding-top: 4rem;
+    border-top: 1px solid rgba(194, 199, 204, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+@media (min-width: 768px) {
+    .page-footer {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+.footer-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+.footer-link {
+    font-family: var(--font-label);
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: rgba(66, 72, 76, 0.6);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.footer-link:hover { color: var(--primary); }
+.footer-copyright { color: rgba(66, 72, 76, 0.4); }
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+.social-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--border-radius-full);
+    background: var(--surface-container-high);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(60, 96, 117, 0.5);
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.social-btn:hover { color: var(--primary); }

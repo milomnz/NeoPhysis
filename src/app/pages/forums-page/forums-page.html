@@ -1,0 +1,14 @@
+<!-- @autor LaMendez -->
+<div class="page-shell">
+  <app-sidebar-nav />
+  <main>
+    <app-neo-header />
+    <app-forum-hero />
+    <app-forum-categories (categorySelected)="onCategorySelected($event)" />
+    <div class="forum-feed-layout">
+      <app-forum-posts [categoryFilter]="selectedCategory()" [tagFilter]="selectedTag()" />
+      <app-forum-trending (tagSelected)="onTagSelected($event)" />
+    </div>
+    <app-footer />
+  </main>
+</div>

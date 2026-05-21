@@ -1,0 +1,103 @@
+/** @autor LaMendez */
+
+.auth-panel {
+  display: none;
+  position: relative;
+  overflow: hidden;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 3rem;
+  /* Combine the primary color with the background image to fill the
+     whole panel and keep the form area separate. */
+  background-color: var(--primary);
+  background-image:
+    linear-gradient(90deg, rgba(0,61,83,1) 0%, rgba(0,61,83,0.95) 35%, rgba(0,61,83,0.65) 65%, rgba(0,61,83,0.2) 100%),
+    url('https://lh3.googleusercontent.com/aida-public/AB6AXuBdvdGCFeX0uOQQtk_CPHwbcmBgpZFfeq9AAHnyrVDjjWJ6c5dpTwLmBzs6BqBJJPhBv7YRlNB3KHVXfvq7yJuk6kpwMwWcxKdE2jpUWz5RZraMC-_oABvSIZPBXmk_SbKrZMghZicdw7X6bOD0ESui2Cj7bZc2709l0S1u-eR4NXOtOea79cjaarA3DuYMoLbB_UIn9t8wDLZV-B4kZXSQYAvCTSOKftGykju3ZZtGHb5Ec5pmm3DWomM1Ur5e6Hnsgol1XhGkPYzE');
+  background-blend-mode: overlay;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  color: #fff;
+
+  @media (min-width: 768px) {
+    display: flex;
+    width: 100%;
+    min-height: 100%;
+  }
+}
+
+.auth-panel__bg {
+  position: absolute;
+  inset: 0;
+  /* hide the bg element now that the image is applied to the parent */
+  display: none;
+}
+
+.auth-panel__gradient {
+  position: absolute;
+  inset: 0;
+  /* hide gradient: we'll control contrast via color overlays if needed */
+  display: none;
+}
+
+.auth-panel__content {
+  position: relative;
+  z-index: 10;
+}
+
+.auth-panel__accent {
+  margin-bottom: 1.5rem;
+  height: 4px;
+  width: 3rem;
+  background-color: var(--secondary);
+  border-radius: var(--border-radius-full);
+}
+
+.auth-panel__title {
+  font-family: var(--font-headline);
+  font-size: 2.25rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.auth-panel__tagline {
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  color: var(--on-primary-container);
+  line-height: 1.6;
+  opacity: 0.9;
+  max-width: 24rem;
+}
+
+.auth-panel__community {
+  margin-top: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.auth-panel__avatars {
+  display: flex;
+}
+
+.auth-panel__avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 2px solid var(--primary);
+  overflow: hidden;
+  margin-left: -0.75rem;
+
+  &:first-child { margin-left: 0; }
+
+  img { width: 100%; height: 100%; object-fit: cover; }
+}
+
+.auth-panel__count {
+  font-family: var(--font-label);
+  font-size: 0.875rem;
+  font-weight: 500;
+}

@@ -1,0 +1,50 @@
+/** @autor milomnz */
+
+.article-layout {
+  display: flex;
+  gap: 3rem;
+
+  &__content {
+    flex-grow: 1;
+    max-width: 56rem;
+  }
+
+  &__heading {
+    font-family: var(--font-heading);
+    font-size: 1.875rem;
+    line-height: 1.4;
+    color: var(--on-surface);
+    margin-bottom: 2rem;
+  }
+
+  &__figure {
+    margin-bottom: 2rem;
+    border-radius: var(--border-radius-lg, 8px);
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+
+  &__image {
+    width: 100%;
+    object-fit: cover;
+    max-height: 500px;
+    display: block;
+  }
+
+  &__caption {
+    font-family: var(--font-ui);
+    font-size: 0.625rem;
+    color: var(--outline-variant);
+    text-align: right;
+    margin-top: 0.25rem;
+    padding-right: 0.25rem;
+  }
+
+  &__paragraph {
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    line-height: 1.75;
+    color: var(--on-surface-variant);
+    margin-bottom: 1.5rem;
+  }
+}

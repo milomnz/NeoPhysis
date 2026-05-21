@@ -1,0 +1,55 @@
+/** @autor LaMendez */
+
+.auth-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  background-color: var(--surface);
+}
+
+.auth-shell__main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 1rem 3rem;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 72rem;
+  min-height: 42rem;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-container-low);
+  border-radius: 2rem;
+  overflow: hidden;
+  box-shadow: 0 32px 64px -12px rgba(6, 30, 41, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: minmax(28rem, 45%) minmax(30rem, 1fr);
+    align-items: stretch;
+  }
+}
+
+.auth-panel {
+  width: 100%;
+  min-width: 0;
+}
+
+.auth-card__form {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  background: var(--surface-container-lowest);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @media (min-width: 768px) {
+    padding: 4rem;
+  }
+}
