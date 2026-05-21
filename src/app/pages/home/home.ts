@@ -6,14 +6,13 @@ import {
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { PostsService } from '../../core/services/posts';
-import { Post, Recomendado, CarouselSlide } from '../../core/models/post.model';
+import { Post, Sugerencia, CarouselSlide } from '../../core/models/post.model';
 import { PostCardComponent } from '../../shared/components/post-card/post-card';
-import { RecCardComponent } from '../../shared/components/rec-card/rec-card';
 import { SidebarNavComponent} from '../../layout/sidebar-nav/sidebar-nav';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, PostCardComponent, RecCardComponent, SidebarNavComponent],
+  imports: [CommonModule, PostCardComponent, SidebarNavComponent],
   templateUrl: './home.html',
   styleUrl: './home.scss'
 })
@@ -21,7 +20,8 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
 
   slides: CarouselSlide[] = [];
   posts: Post[] = [];
-  recomendados: Recomendado[] = [];
+  sugerencias: Sugerencia[] = [];
+  tabActivo: 'reciente' | 'popular' = 'reciente';
 
   currentSlide = 0;
   readonly AUTOPLAY_DELAY = 4000;
@@ -37,7 +37,7 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit(): void {
     this.slides = this.postsService.getSlides();
     this.posts = this.postsService.getPosts();
-    this.recomendados = this.postsService.getRecomendados();
+    this.sugerencias = this.postsService.getSugerencias();
     this.startAutoPlay();
   }
 
@@ -82,6 +82,12 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
       clearInterval(this.autoPlayInterval);
       this.autoPlayInterval = null;
     }
+  }
+
+  cambiarTab(tab: 'reciente' | 'popular'): void {
+    this.tabActivo = tab;
+    this.sugerencias = [...this.postsService.getSugerencias()]
+      .sort((a, b) => tab === 'popular' ? b.votos - a.votos : a.id - b.id);
   }
 
   irAForos(): void { this.router.navigate(['/foros']); }

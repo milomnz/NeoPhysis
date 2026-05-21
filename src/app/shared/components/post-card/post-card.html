@@ -1,12 +1,34 @@
-<article class="post-card">
-  <img [src]="post.img" [alt]="post.titulo" class="post-img">
-  <div class="post-body">
-    <h3 class="post-titulo">{{ post.titulo }}</h3>
-    <p class="post-desc">{{ post.desc }}</p>
-    <div class="post-stats">
-      <span>❤ {{ post.likes }}</span>
-      <span>☁ {{ post.shares }}</span>
-      <span>💬 {{ post.comments }}</span>
+<article class="reddit-card" [class.reddit-card--with-img]="post.img" (click)="goToForum()">
+  <!-- Votos -->
+  <div class="votos">
+    <button class="voto-btn" aria-label="Votar a favor" (click)="votar(1, $event)">▲</button>
+    <span class="voto-num">{{ post.votos }}</span>
+    <button class="voto-btn" aria-label="Votar en contra" (click)="votar(-1, $event)">▼</button>
+  </div>
+
+  <!-- Contenido -->
+  <div class="reddit-body">
+    <div class="reddit-meta">
+      <img [src]="post.avatar" [alt]="post.autor" class="autor-avatar">
+      <span class="autor-nombre">{{ post.autor }}</span>
+      <span class="autor-tiempo">• {{ post.tiempo }}</span>
+      <span class="cat-tag">{{ post.categoria }}</span>
+    </div>
+
+    <h3 class="reddit-titulo">{{ post.titulo }}</h3>
+    <p class="reddit-desc">{{ post.desc }}</p>
+
+    <div class="reddit-actions">
+      <button class="action-btn" (click)="stopPropagation($event)">💬 {{ post.comentarios }} Comentarios</button>
+      <button class="action-btn" (click)="stopPropagation($event)">↑ Compartir</button>
+      <button class="action-btn save-btn" aria-label="Guardar post" (click)="stopPropagation($event)">🔖</button>
     </div>
   </div>
+
+  <!-- Imagen destacada -->
+  @if (post.img) {
+    <div class="reddit-img-wrap">
+      <img [src]="post.img" [alt]="post.titulo" class="reddit-img">
+    </div>
+  }
 </article>

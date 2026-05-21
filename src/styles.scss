@@ -1,43 +1,70 @@
 /** @autor milomnz */
 
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@400;600;700&family=Newsreader:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&family=Manrope:wght@400;600;800&display=swap');
 
 :root {
-  --primary: #3c6075;
-  --primary-container: #55798f;
+  --primary: #12354A;
+  --primary-container: #1b4966;
   --on-primary: #ffffff;
-  --surface: #fcf9f8;
-  --surface-container: #f0eded;
-  --surface-container-high: #eae7e7;
-  --surface-container-low: #f6f3f2;
-  --on-surface: #1c1b1b;
-  --on-surface-variant: #42484c;
-  --outline-variant: #c2c7cc;
-  --sidebar-gradient: linear-gradient(to bottom, #3c6075, #55798f);
+  --surface: #f8f9fa;
+  --surface-container: #f1f3f5;
+  --surface-container-high: #e9ecef;
+  --surface-container-low: #fdfdfd;
+  --on-surface: #1a1d20;
+  --on-surface-variant: #495057;
+  --outline-variant: #ced4da;
+  --sidebar-gradient: linear-gradient(180deg, #0b2230 0%, #12354A 100%);
 
-  --font-headline: 'Newsreader', serif;
-  --font-body: 'Newsreader', serif;
-  --font-label: 'Inter', sans-serif;
-
-  --font-serif: 'Libre Baskerville', serif;
-  --font-sans: 'Inter', sans-serif;
+  --font-heading: 'Libre Baskerville', serif;
+  --font-body: 'Libre Baskerville', serif;
+  --font-ui: 'Inter', sans-serif;
+  --font-landing: 'Manrope', sans-serif;
 
   --border-radius: 0.25rem;
   --border-radius-lg: 0.5rem;
   --border-radius-full: 9999px;
 
-  --sidebar-width: 256px;
+  --sidebar-width: 160px;
   --topbar-height: 64px;
 
-  --color-sidebar: #5D8091;
-  --color-bg: #F3F4F6;
-  --color-hr: #D1D5DB;
+  --color-hr: #dee2e6;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+.skip-link {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.skip-link:focus {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+    padding: 8px 16px;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    z-index: 9999;
+    background: var(--primary);
+    color: var(--on-primary);
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 0 0 8px 0;
 }
 
 body {
@@ -67,7 +94,7 @@ app-root {
   min-height: 100vh;
 }
 
-.page-shell > main {
+.page-shell>main {
   flex: 1 1 auto;
   min-width: 0;
   padding: 3rem;
@@ -76,7 +103,7 @@ app-root {
 }
 
 @media (max-width: 1023px) {
-  .page-shell > main {
+  .page-shell>main {
     padding: 1.25rem;
     padding-top: 4.5rem;
   }

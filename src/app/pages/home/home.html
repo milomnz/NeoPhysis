@@ -1,6 +1,6 @@
 <div class="page-shell">
   <app-sidebar-nav></app-sidebar-nav>
-  <main style="padding: 0;">
+  <main id="main-content" style="padding: 0;">
 <section class="carousel"
   (mouseenter)="pauseAutoPlay()"
   (mouseleave)="resumeAutoPlay()">
@@ -9,24 +9,28 @@
     @for (slide of slides; track slide.id; let i = $index) {
       <div class="carousel-slide" [class.active]="i === currentSlide">
         <img [src]="slide.img" [alt]="slide.titulo" class="slide-img">
-        <div class="slide-overlay">
-          <h1 class="slide-titulo">NEO PHYSIS</h1>
-          <p class="slide-sub">{{ slide.subtitulo }}</p>
-          <div class="slide-btns">
-            <button class="btn-primary" (click)="irAForos()">Explorar ahora</button>
-            <button class="btn-secondary" (click)="irAPublicar()">Publicar foro</button>
-          </div>
-        </div>
       </div>
     }
+    <div class="carousel-overlay"></div>
   </div>
 
-  <button class="carousel-btn prev" (click)="prevSlide()">&#8249;</button>
-  <button class="carousel-btn next" (click)="nextSlide()">&#8250;</button>
+  <div class="carousel-content-wrapper">
+    <div class="carousel-content">
+      <img src="/Logo2.png" alt="Neo Physis Logo" class="carousel-logo">
+      <div class="carousel-text-container">
+        @for (slide of slides; track slide.id; let i = $index) {
+          <p class="carousel-sub" [class.active]="i === currentSlide">{{ slide.subtitulo }}</p>
+        }
+      </div>
+    </div>
+  </div>
 
-  <div class="carousel-dots">
+  <button class="carousel-btn prev" aria-label="Diapositiva anterior" (click)="prevSlide()">&#8249;</button>
+  <button class="carousel-btn next" aria-label="Siguiente diapositiva" (click)="nextSlide()">&#8250;</button>
+
+  <div class="carousel-dots" role="tablist">
     @for (slide of slides; track slide.id; let i = $index) {
-      <button class="dot" [class.active]="i === currentSlide" (click)="goToSlide(i)"></button>
+      <button class="dot" role="tab" [attr.aria-label]="'Ir a diapositiva ' + (i + 1)" [attr.aria-selected]="i === currentSlide" [class.active]="i === currentSlide" (click)="goToSlide(i)"></button>
     }
   </div>
 
@@ -35,24 +39,82 @@
   </div>
 </section>
 
-<section class="seccion">
-  <h2 class="seccion-titulo fade-item" #animTarget>Tendencias</h2>
-  @for (post of posts; track post.id) {
-    <div class="fade-item" #animTarget>
-      <app-post-card [post]="post"></app-post-card>
-    </div>
-  }
-</section>
+<!-- CUERPO PRINCIPAL -->
+<div class="home-body">
 
-<section class="seccion">
-  <h2 class="seccion-titulo fade-item" #animTarget>Recomendados para ti</h2>
-  <div class="rec-grid">
-    @for (rec of recomendados; track rec.id; let i = $index) {
-      <div class="fade-item" #animTarget [style.transition-delay]="(i * 0.15) + 's'">
-        <app-rec-card [rec]="rec"></app-rec-card>
+  <!-- COLUMNA PRINCIPAL -->
+  <div class="home-main">
+
+    <!-- TENDENCIAS -->
+    <section class="seccion">
+      <h2 class="seccion-titulo fade-item" #animTarget>Tendencias</h2>
+      @for (post of posts; track post.id) {
+        <div class="fade-item" #animTarget>
+          <app-post-card [post]="post"></app-post-card>
+        </div>
+      }
+    </section>
+
+    <!-- SUGERENCIAS -->
+    <section class="seccion">
+      <div class="sugerencias-header">
+        <h2 class="seccion-titulo" style="margin:0">Sugerencias para ti</h2>
+        <div class="tabs">
+          <button class="tab" [class.active]="tabActivo === 'reciente'"
+            (click)="cambiarTab('reciente')">Más Reciente</button>
+          <button class="tab" [class.active]="tabActivo === 'popular'"
+            (click)="cambiarTab('popular')">Popular</button>
+        </div>
       </div>
-    }
+
+      @for (s of sugerencias; track s.id) {
+        <div class="fade-item" #animTarget>
+          <app-post-card [post]="s"></app-post-card>
+        </div>
+      }
+    </section>
+
   </div>
-</section>
+
+  <!-- SIDEBAR DERECHO -->
+  <aside class="home-aside">
+
+    <div class="aside-card">
+      <h4 class="aside-titulo">Temas Populares</h4>
+      <div class="aside-tags">
+        <span>#Mitigación</span>
+        <span>#Bioinformática</span>
+        <span>#Tecnología Farmacéutica</span>
+        <span>#BioÉtica</span>
+        <span>#Genética</span>
+        <span>#Automatización</span>
+      </div>
+    </div>
+
+    <div class="aside-card stats-card">
+      <h4 class="aside-titulo">Estadísticas</h4>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <small>TOTAL MIEMBROS</small>
+          <strong>12.4k</strong>
+        </div>
+        <div class="stat-item">
+          <small>POSTS TOTALES</small>
+          <strong>22.6k</strong>
+        </div>
+        <div class="stat-item">
+          <small>POSTS DIARIOS</small>
+          <strong>1.1k</strong>
+        </div>
+        <div class="stat-item">
+          <small>PERSONAS QUE COMENTAN</small>
+          <strong>88%</strong>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+</div>
   </main>
 </div>

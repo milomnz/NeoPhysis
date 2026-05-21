@@ -3,9 +3,16 @@ export interface Post {
     img: string;
     titulo: string;
     desc: string;
-    likes: string;
-    shares: string;
-    comments: string;
+    votos?: number;
+    comentarios?: number;
+    categoria?: string;
+    categoriaColor?: string;
+    autor?: string;
+    avatar?: string;
+    tiempo?: string;
+    likes?: string;
+    shares?: string;
+    comments?: string;
 }
 
 export interface Recomendado {
@@ -41,4 +48,17 @@ export interface CarouselSlide {
     img: string;
     titulo: string;
     subtitulo: string;
+}
+
+export interface Sugerencia {
+    id: number;
+    autor: string;
+    avatar: string;
+    tiempo: string;
+    categoria: string;
+    categoriaColor: string;
+    titulo: string;
+    desc: string;
+    votos: number;
+    comentarios: number;
 }

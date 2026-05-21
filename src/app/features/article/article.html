@@ -1,17 +1,17 @@
 <!-- @autor milomnz -->
 
 <div class="article-layout">
-  <article>
-    <h2>{{ article.title }}</h2>
-    <figure>
-      <img [src]="article.imageUrl" [alt]="article.title" />
-      <figcaption>{{ article.imageCaption }}</figcaption>
+  <article class="article-layout__content">
+    <h2 class="article-layout__heading">{{ article.title }}</h2>
+    <figure class="article-layout__figure">
+      <img class="article-layout__image" [src]="article.imageUrl" [alt]="article.title" />
+      <figcaption class="article-layout__caption">{{ article.imageCaption }}</figcaption>
     </figure>
-    <section class="article-body">
+    <section class="article-layout__body">
       @for (paragraph of article.body; track $index) {
-        <p>{{ paragraph }}</p>
+        <p class="article-layout__paragraph">{{ paragraph }}</p>
       }
     </section>
   </article>
-  <app-article-meta [article]="article" />
+  <app-article-meta class="article-layout__meta" [article]="article" />
 </div>

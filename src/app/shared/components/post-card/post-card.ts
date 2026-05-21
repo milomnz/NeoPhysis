@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { Post } from '../../../core/models/post.model';
 
 @Component({
@@ -10,5 +11,21 @@ import { Post } from '../../../core/models/post.model';
   styleUrl: './post-card.scss'
 })
 export class PostCardComponent {
-  @Input() post!: Post;
+  @Input() post!: Post | any;
+  private router = inject(Router);
+
+  votar(dir: number, event: Event) {
+    event.stopPropagation();
+    if(this.post && this.post.votos !== undefined) {
+      this.post.votos += dir;
+    }
+  }
+
+  goToForum() {
+    this.router.navigate(['/foros']);
+  }
+
+  stopPropagation(event: Event) {
+    event.stopPropagation();
+  }
 }
