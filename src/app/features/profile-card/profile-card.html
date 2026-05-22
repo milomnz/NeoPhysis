@@ -4,13 +4,16 @@
   <div class="profile-card">
     <div class="profile-card__banner" aria-hidden="true"></div>
     <div class="profile-card__body">
-      <div class="profile-card__avatar-wrap">
+      <div class="profile-card__avatar-wrap" (click)="onAvatarClick()" title="Cambiar foto de perfil" style="cursor:pointer; position:relative;">
         <img
           class="profile-card__avatar"
           [src]="user().avatarSrc"
           [alt]="user().name"
           loading="eager"
         />
+        <div class="profile-card__avatar-overlay">
+          <span class="material-symbols-outlined" aria-hidden="true">photo_camera</span>
+        </div>
       </div>
 
       @if (editMode()) {

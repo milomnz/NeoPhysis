@@ -1,10 +1,25 @@
 /** @autor LaMendez */
 
 import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component, signal, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 type Tab = 'publicaciones' | 'comentadas' | 'guardado';
+
+interface SavedPost {
+  id: number;
+  author: string;
+  avatar: string;
+  time: string;
+  category: string;
+  categoryDark: boolean;
+  title: string;
+  excerpt: string;
+  votes: number;
+  comments: number;
+  tags: string[];
+  date: string;
+}
 
 @Component({
   selector: 'app-profile-feed',
@@ -13,9 +28,10 @@ type Tab = 'publicaciones' | 'comentadas' | 'guardado';
   templateUrl: './profile-feed.html',
   styleUrl: './profile-feed.scss',
 })
-export class ProfileFeedComponent {
+export class ProfileFeedComponent implements OnInit {
   protected readonly activeTab = signal<Tab>('publicaciones');
   protected readonly newTopic = signal('');
+  protected readonly savedPosts = signal<SavedPost[]>([]);
   protected readonly selectedTopics = signal([
     'Genética Aplicada',
     'Microbiología',
@@ -24,18 +40,22 @@ export class ProfileFeedComponent {
     'Bioinformática',
   ]);
 
-  setTab(tab: Tab): void {
-    this.activeTab.set(tab);
+  ngOnInit(): void {
+    this.loadSavedPosts();
   }
 
-  protected addTopic(): void {
-    const topic = this.newTopic().trim();
-    if (!topic || this.selectedTopics().includes(topic)) {
-      this.newTopic.set('');
-      return;
+  private loadSavedPosts(): void {
+    const saved = localStorage.getItem('neophysis-saved-posts');
+    if (saved) {
+      this.savedPosts.set(JSON.parse(saved));
     }
-    this.selectedTopics.update((topics) => [...topics, topic]);
-    this.newTopic.set('');
+  }
+
+  setTab(tab: Tab): void {
+    if (tab === 'guardado') {
+      this.loadSavedPosts();
+    }
+    this.activeTab.set(tab);
   }
 
   protected removeTopic(topic: string): void {

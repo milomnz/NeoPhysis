@@ -205,5 +205,9 @@ export class ForumPostsComponent {
 
   private saveStates(): void {
     localStorage.setItem('neophysis-post-states', JSON.stringify(this.postStates()));
+    // Save full post data for bookmarked posts so profile can read them
+    const states = this.postStates();
+    const bookmarked = this.posts().filter((p) => states[p.id]?.bookmarked);
+    localStorage.setItem('neophysis-saved-posts', JSON.stringify(bookmarked));
   }
 }

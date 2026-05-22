@@ -147,3 +147,15 @@
   font-weight: 600;
   cursor: pointer;
 }
+
+.profile-feed__saved-list { display: flex; flex-direction: column; gap: 1rem; }
+.profile-feed__saved-card { background: var(--surface-container-low); border-radius: 1rem; padding: 1.25rem 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; }
+.profile-feed__saved-meta { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+.profile-feed__saved-avatar { width: 2rem; height: 2rem; border-radius: 50%; object-fit: cover; }
+.profile-feed__saved-author { font-family: var(--font-label); font-size: 0.875rem; font-weight: 600; color: var(--on-surface); }
+.profile-feed__saved-time { font-family: var(--font-body); font-size: 0.8125rem; color: var(--on-surface-variant); opacity: 0.7; }
+.profile-feed__saved-category { margin-left: auto; font-family: var(--font-label); font-size: 0.75rem; font-weight: 700; background: var(--primary-container); color: #fff; padding: 0.2rem 0.75rem; border-radius: 999px; }
+.profile-feed__saved-title { font-family: var(--font-headline); font-size: 1rem; font-weight: 700; color: var(--primary); margin: 0; }
+.profile-feed__saved-excerpt { font-family: var(--font-body); font-size: 0.8125rem; color: var(--on-surface-variant); line-height: 1.5; margin: 0; }
+.profile-feed__saved-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.profile-feed__saved-tag { font-family: var(--font-label); font-size: 0.75rem; font-weight: 600; color: var(--primary); background: var(--surface-container); padding: 0.15rem 0.6rem; border-radius: 999px; }

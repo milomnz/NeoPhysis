@@ -200,3 +200,6 @@
   text-decoration: none;
   &:hover { text-decoration: underline; }
 }
+
+.profile-card__avatar-overlay { position: absolute; inset: 0; border-radius: 50%; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s; color: #fff; .material-symbols-outlined { font-size: 1.5rem; } }
+.profile-card__avatar-wrap:hover .profile-card__avatar-overlay { opacity: 1; }

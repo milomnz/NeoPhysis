@@ -44,7 +44,6 @@
         <p class="profile-feed__empty-desc">
           Empieza a compartir tus hallazgos, dilemas o investigaciones con la comunidad.
         </p>
-        <a class="profile-feed__empty-btn" routerLink="/registro">Crear primera publicación</a>
       </div>
     }
     @if (activeTab() === 'comentadas') {
@@ -59,15 +58,37 @@
       </div>
     }
     @if (activeTab() === 'guardado') {
-      <div class="profile-feed__empty" role="tabpanel" aria-label="Publicaciones guardadas">
-        <div class="profile-feed__empty-icon">
-          <span class="material-symbols-outlined" aria-hidden="true">bookmark</span>
+      @if (savedPosts().length === 0) {
+        <div class="profile-feed__empty" role="tabpanel" aria-label="Publicaciones guardadas">
+          <div class="profile-feed__empty-icon">
+            <span class="material-symbols-outlined" aria-hidden="true">bookmark</span>
+          </div>
+          <h2 class="profile-feed__empty-title">No hay publicaciones guardadas</h2>
+          <p class="profile-feed__empty-desc">
+            Guarda tus artículos favoritos para revisarlos después.
+          </p>
         </div>
-        <h2 class="profile-feed__empty-title">No hay publicaciones guardadas</h2>
-        <p class="profile-feed__empty-desc">
-          Guarda tus artículos favoritos para revisarlos después.
-        </p>
-      </div>
+      } @else {
+        <div class="profile-feed__saved-list" role="tabpanel" aria-label="Publicaciones guardadas">
+          @for (post of savedPosts(); track post.id) {
+            <div class="profile-feed__saved-card">
+              <div class="profile-feed__saved-meta">
+                <img class="profile-feed__saved-avatar" [src]="post.avatar" [alt]="post.author" loading="lazy" />
+                <span class="profile-feed__saved-author">{{ post.author }}</span>
+                <span class="profile-feed__saved-time">• {{ post.time }}</span>
+                <span class="profile-feed__saved-category">{{ post.category }}</span>
+              </div>
+              <h3 class="profile-feed__saved-title">{{ post.title }}</h3>
+              <p class="profile-feed__saved-excerpt">{{ post.excerpt }}</p>
+              <div class="profile-feed__saved-tags">
+                @for (tag of post.tags; track tag) {
+                  <span class="profile-feed__saved-tag">{{ tag }}</span>
+                }
+              </div>
+            </div>
+          }
+        </div>
+      }
     }
   </div>
 
@@ -84,17 +105,6 @@
           {{ topic }} <span class="material-symbols-outlined" aria-hidden="true">close</span>
         </button>
       }
-    </div>
-    <div class="profile-feed__topic-form">
-      <input
-        class="profile-feed__topic-input"
-        type="text"
-        placeholder="Agregar tema"
-        aria-label="Agregar tema de interés"
-        [value]="newTopic()"
-        (input)="newTopic.set($event.target.value)"
-      />
-      <button class="profile-feed__topic-add" type="button" (click)="addTopic()">Agregar</button>
     </div>
   </div>
 </section>

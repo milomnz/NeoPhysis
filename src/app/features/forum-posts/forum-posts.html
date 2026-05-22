@@ -23,19 +23,8 @@
       </label>
       <div class="forum-posts__sort">
         <button
-          class="forum-posts__sort-btn"
-          [class.forum-posts__sort-btn--active]="sort() === 'reciente'"
-          [attr.aria-pressed]="sort() === 'reciente'"
-          (click)="setSort('reciente')"
-          type="button"
-        >
-          Más Reciente
-        </button>
-        <button
-          class="forum-posts__sort-btn"
-          [class.forum-posts__sort-btn--active]="sort() === 'popular'"
-          [attr.aria-pressed]="sort() === 'popular'"
-          (click)="setSort('popular')"
+          class="forum-posts__sort-btn forum-posts__sort-btn--active"
+          [attr.aria-pressed]="true"
           type="button"
         >
           Popular
